@@ -1,7 +1,7 @@
 package com.yearup;
 
-import Enums.HealthyFats;
-import Enums.ProteinBoosts;
+//import Enums.HealthyFats;
+//import Enums.ProteinBoosts;
 import Enums.RegularToppings;
 import Enums.Sizing;
 
@@ -134,46 +134,58 @@ public class YogurtTreat {
 
         boolean running = true;
         while (running) {
+            //Oats
+            //- Yogurt drops
+            //-  Quinoa
+            //- Chia seeds
+            //
+            //Peanut butter drops
+            //
+            //Chicken bits
             System.out.println("Choose your Protein Boosts ");
-            //todo add proetinboosts
+            System.out.println("1. Oats ");
+            System.out.println("2. Yogurt Drops");
+            System.out.println("3. Quinoa");
+            System.out.println("4. Chia Seeds");
+            System.out.println("5. Peanut Butter Drops");
+            System.out.println("6. Chicken Bits");
             System.out.println("X to finish selection");
             System.out.println("Pick here");
             String choice = scanner.nextLine();
-            if(choice.equalsIgnoreCase("X")){
+            if (choice.equalsIgnoreCase("X")) {
                 running = false;
-            }
-            else{
+            } else {
                 System.out.println("Would you like extra true or false");
                 boolean extra = Boolean.parseBoolean(scanner.nextLine());
                 ProteinBoost boost = new ProteinBoost();
-                switch(choice) {
+                switch (choice) {
                     case "1":
-                        boost.setName("first topping");
+                        boost.setName("Oats");
                         boost.setExtra(extra);
                         PremiumList.add(boost);
                         break;
                     case "2":
-                        boost.setName("first topping");
+                        boost.setName("Yogurt Drops");
                         boost.setExtra(extra);
                         PremiumList.add(boost);
                         break;
                     case "3":
-                        boost.setName("first topping");
+                        boost.setName("Quinoa");
                         boost.setExtra(extra);
                         PremiumList.add(boost);
                         break;
                     case "4":
-                        boost.setName("first topping");
+                        boost.setName("Chia Seeds");
                         boost.setExtra(extra);
                         PremiumList.add(boost);
                         break;
                     case "5":
-                        boost.setName("first topping");
+                        boost.setName("Peanut Butter Drops");
                         boost.setExtra(extra);
                         PremiumList.add(boost);
                         break;
                     case "6":
-                        boost.setName("first topping");
+                        boost.setName("Chicken Bits");
                         boost.setExtra(extra);
                         PremiumList.add(boost);
                         break;
@@ -182,24 +194,79 @@ public class YogurtTreat {
                         boost.setExtra(extra);
                         PremiumList.add(boost);
                         break;
-                    case "8":
-                        boost.setName("first topping");
-                        boost.setExtra(extra);
-                        PremiumList.add(boost);
-                        break;
-                    case "9":
-                        boost.setName("first topping");
-                        boost.setExtra(extra);
-                        PremiumList.add(boost);
-                        break;
                 }
+                System.out.println("Choose your Healthy Fats! ");
+                boolean runninghealthyfats = true;
+                while (running) {
+                    //Oats
+                    //- Yogurt drops
+                    //-  Quinoa
+                    //- Chia seeds
+                    //
+                    //Peanut butter drops
+                    //
+                    //Chicken bits
+                    System.out.println("Choose your Healthy Fats! ");
+                    System.out.println("1. Oats ");
+                    System.out.println("2. Yogurt Drops");
+                    System.out.println("3. Quinoa");
+                    System.out.println("4. Chia Seeds");
+                    System.out.println("5. Peanut Butter Drops");
+                    System.out.println("6. Chicken Bits");
+                    System.out.println("X to finish selection");
+                    System.out.println("Pick here");
+                    String choiceforhealthyfats = scanner.nextLine();
+                    if (choiceforhealthyfats.equalsIgnoreCase("X")) {
+                        running = false;
+                    } else {
+                        System.out.println("Would you like extra true or false");
+                        boolean extraforhealthyfats = Boolean.parseBoolean(scanner.nextLine());
+                       HealthyFat healthyFat = new HealthyFat();
+                        switch (choiceforhealthyfats) {
+                            case "1":
+                                boost.setName("Oats");
+                                boost.setExtra(extraforhealthyfats);
+                                PremiumList.add(boost);
+                                break;
+                            case "2":
+                                boost.setName("Yogurt Drops");
+                                boost.setExtra(extraforhealthyfats);
+                                PremiumList.add(boost);
+                                break;
+                            case "3":
+                                boost.setName("Quinoa");
+                                boost.setExtra(extraforhealthyfats);
+                                PremiumList.add(boost);
+                                break;
+                            case "4":
+                                boost.setName("Chia Seeds");
+                                boost.setExtra(extraforhealthyfats);
+                                PremiumList.add(boost);
+                                break;
+                            case "5":
+                                boost.setName("Peanut Butter Drops");
+                                boost.setExtra(extraforhealthyfats);
+                                PremiumList.add(boost);
+                                break;
+                            case "6":
+                                boost.setName("Chicken Bits");
+                                boost.setExtra(extraforhealthyfats);
+                                PremiumList.add(boost);
+                                break;
+                            case "7":
+                                boost.setName("first topping");
+                                boost.setExtra(extraforhealthyfats);
+                                PremiumList.add(boost);
+                                break;
 
 
+                        }
+
+                    }
+
+
+                }
             }
-
         }
-
-
     }
-}
-
+    }
