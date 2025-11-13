@@ -44,6 +44,8 @@ public class HomeScreen {
 
                 case "1" :
                     System.out.println("\n\n====Place holder ====");
+                    YogurtTreat yogurtTreat = new YogurtTreat();
+                    yogurtTreat.addYogurt();
 
                     break;
 

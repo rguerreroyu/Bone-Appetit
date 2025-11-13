@@ -1,36 +1,62 @@
 package com.yearup;
 
+import Enums.Sizing;
+
 import java.util.ArrayList;
 import java.util.Scanner;
 
 public class YogurtTreat {
-    private String size;
+    private Sizing.Size size;
     private String flaborbase;
-//    private ProteinBoosts proteinboosts;
     private HealthyFats healhtyfats;
     ArrayList<ProteinBoosts> PremiumList = new ArrayList<>();
     ArrayList<RegularToppings> RegularList = new ArrayList<>();
-//    private RegularToppings regulartoppings;
     private Drizzles drizzles;
     private Sides sides;
+    double price;
 
-    public YogurtTreat(String size, String flaborbase, HealthyFats healhtyfats, ArrayList<ProteinBoosts> premiumList, ArrayList<RegularToppings> regularList, Drizzles drizzles, Sides sides) {
-        this.size = size;
+    public YogurtTreat(Sizing.Size size, String flaborbase, HealthyFats healhtyfats, ArrayList<ProteinBoosts> premiumList, ArrayList<RegularToppings> regularList, Drizzles drizzles, Sides sides, double price) {
         this.flaborbase = flaborbase;
         this.healhtyfats = healhtyfats;
         PremiumList = premiumList;
         RegularList = regularList;
         this.drizzles = drizzles;
         this.sides = sides;
+        this.price = price;
+        this.size = size;
     }
 
-    public YogurtTreat(){}
-
-    public String getSize() {
-        return size;
+    public YogurtTreat() {
     }
 
-    public void setSize(String size) {
+    public double getPrice() {
+        return price;
+    }
+
+    public void setPrice(double price) {
+        this.price = price;
+    }
+
+    public double getBasePrice(Sizing.Size size) {
+        double price = 0;
+
+        switch (size) {
+            case SMALL:
+                price = 3.50;
+                break;
+            case MEDIUM:
+                price = 5.00;
+                break;
+            case LARGE:
+                price = 8.50;
+                break;
+        }
+        return price;
+
+    }
+
+
+    public void setSize(Sizing.Size size) {
         this.size = size;
     }
 
@@ -82,37 +108,28 @@ public class YogurtTreat {
         this.sides = sides;
     }
 
-    public class YogurtCalculator {
 
-        public static double calculateYogurtPrice(
-                int numberOfProteinBoosters,
-                int numberOfExtraProteinBoosters) {
-
-            double basePrice = 5.50;
-            double meatPrice = 1.00;
-            double extraMeatPrice = 0.50;
-
-            double total = basePrice
-                    + (meatPrice * numberOfProteinBoosters)
-                    + (extraMeatPrice * numberOfExtraProteinBoosters);
-
-            return total;
-        }
-
-        public double calculatePrice() {
-            return 0;//getBasePrice() * (weightInGrams / 100.0);
-        }
-
-    }
     public void addYogurt(){
-        System.out.println("Size");
+        System.out.println("Choose your size: Small, Medium, Large");
         Scanner scanner = new Scanner(System.in);
         YogurtTreat order = new YogurtTreat();
-        order.setSize(scanner.nextLine());//touppercase,.totrim
+        System.out.println("Choose size (SMALL, MEDIUM, LARGE):");
+        String input = scanner.nextLine().trim().toUpperCase();
+
+        try {
+            order.setSize(Sizing.Size.valueOf(input));
+        } catch (IllegalArgumentException e) {
+            System.out.println("Invalid size entered. Please use SMALL, MEDIUM, or LARGE.");
+            return;
+        }
+        double basePrice = getBasePrice(order.size);
+        order.setPrice(basePrice);
+        System.out.println(order.price);
 
 
-        System.out.println("Flavorbase");
-        order.setFlaborbase(scanner.nextLine());
+        System.out.println("Enter flavor base:");
+        order.setFlaborbase(scanner.nextLine().trim());
+        //touppercase,.totrim
 
         System.out.println("");
 

@@ -1,13 +1,13 @@
 package com.yearup;
 
+import Enums.Sizing;
+
 public class HealthyFats {
     String name;
-    double price;
     boolean extra;
 
-    public HealthyFats(String name, double price, boolean extra) {
+    public HealthyFats(String name, boolean extra) {
         this.name = name;
-        this.price = price;
         this.extra = extra;
     }
 
@@ -17,54 +17,39 @@ public class HealthyFats {
         return name;
     }
 
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public double getPrice(String Size) {
-        switch (Size) {
-            case "S":
-                if (extra){
-                    return 1.50;
-                }else {
-                    return 1.0;
-                }
-
-
-            case "M":
-                if (extra){
-                    return 3.0;
-                }else {
-                    return 2.0;
-                }
-
-            case "L":
-                if (extra){
-                    return 4.50;
-                }else {
-                    return 3.0;
-                }
-            default:
-                return 0;
-
-        }
-
-
-
-
-
-    }
-
-    public void setPrice(double price) {
-        this.price = price;
-    }
-
     public boolean isExtra() {
         return extra;
     }
 
-    public void setExtra(boolean extra) {
-        this.extra = extra;
+    public double getPrice(Sizing.Size size) {
+        double price = 0;
+
+        switch (size) {
+            case SMALL:
+                if (extra) {
+                    price = 1.50;
+                } else {
+                    price = 1.00;
+                }
+                break;
+            case MEDIUM:
+                if (extra) {
+                    price = 3.00;
+                } else {
+                    price = 2.00;
+                }
+                break;
+            case LARGE:
+                if (extra) {
+                    price = 4.50;
+                } else {
+                    price = 3.00;
+                }
+                break;
+        }
+
+        return price;
     }
+
 
 }
