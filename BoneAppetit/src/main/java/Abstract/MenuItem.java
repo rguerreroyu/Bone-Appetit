@@ -1,4 +1,4 @@
-package com.yearup;
+package Abstract;
 
 public abstract class MenuItem {
         private String name;

@@ -1,6 +1,8 @@
 package com.yearup;
 
-public class Drink extends MenuItem{
+import Abstract.MenuItem;
+
+public class Drink extends MenuItem {
 
     public Drink(String name, double price) {
         super("Pupacchino", 2.0);

@@ -2,16 +2,20 @@ package com.yearup;
 
 import Enums.Sizing;
 
-public class HealthyFats {
+public class HealthyFat {
     String name;
     boolean extra;
+    boolean isPremium;
 
-    public HealthyFats(String name, boolean extra) {
-        this.name = name;
-        this.extra = extra;
+
+    public HealthyFat() {
     }
 
-    public HealthyFats(){}
+    public HealthyFat(String name, boolean extra, boolean isPremium) {
+        this.name = name;
+        this.extra = extra;
+        this.isPremium = isPremium;
+    }
 
     public String getName() {
         return name;
@@ -19,6 +23,10 @@ public class HealthyFats {
 
     public boolean isExtra() {
         return extra;
+    }
+
+    public boolean isPremium() {
+        return isPremium;
     }
 
     public double getPrice(Sizing.Size size) {
@@ -47,9 +55,10 @@ public class HealthyFats {
                 }
                 break;
         }
+        if (isPremium) {
+            price += 0.50;
+        }
 
         return price;
     }
-
-
 }

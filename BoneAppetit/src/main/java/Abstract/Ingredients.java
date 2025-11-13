@@ -1,7 +1,4 @@
-package com.yearup;
-
-import java.util.ArrayList;
-import java.util.Scanner;
+package Abstract;
 
 public abstract class Ingredients {
     private String name;

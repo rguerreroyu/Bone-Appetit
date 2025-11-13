@@ -1,5 +1,8 @@
 package com.yearup;
 
+import Enums.HealthyFats;
+import Enums.ProteinBoosts;
+import Enums.RegularToppings;
 import Enums.Sizing;
 
 import java.util.ArrayList;
@@ -8,18 +11,18 @@ import java.util.Scanner;
 public class YogurtTreat {
     private Sizing.Size size;
     private String flaborbase;
-    private HealthyFats healhtyfats;
-    ArrayList<ProteinBoosts> PremiumList = new ArrayList<>();
-    ArrayList<RegularToppings> RegularList = new ArrayList<>();
+    private ArrayList<HealthyFat> healhtyfats = new ArrayList<>();
+    private ArrayList<ProteinBoost> PremiumList = new ArrayList<>();
+    private ArrayList<RegularToppings> RegularList = new ArrayList<>();
     private Drizzles drizzles;
     private Sides sides;
     double price;
 
-    public YogurtTreat(Sizing.Size size, String flaborbase, HealthyFats healhtyfats, ArrayList<ProteinBoosts> premiumList, ArrayList<RegularToppings> regularList, Drizzles drizzles, Sides sides, double price) {
+    public YogurtTreat(Sizing.Size size, String flaborbase, ArrayList<HealthyFat> healhtyfats, ArrayList<ProteinBoost> premiumList, ArrayList<RegularToppings> regularList, Drizzles drizzles, Sides sides, double price) {
         this.flaborbase = flaborbase;
         this.healhtyfats = healhtyfats;
-        PremiumList = premiumList;
-        RegularList = regularList;
+        this.PremiumList = premiumList;
+        this.RegularList = regularList;
         this.drizzles = drizzles;
         this.sides = sides;
         this.price = price;
@@ -38,7 +41,6 @@ public class YogurtTreat {
     }
 
     public double getBasePrice(Sizing.Size size) {
-        double price = 0;
 
         switch (size) {
             case SMALL:
@@ -68,19 +70,19 @@ public class YogurtTreat {
         this.flaborbase = flaborbase;
     }
 
-    public HealthyFats getHealhtyfats() {
+    public ArrayList<HealthyFat> getHealhtyfats() {
         return healhtyfats;
     }
 
-    public void setHealhtyfats(HealthyFats healhtyfats) {
+    public void setHealhtyfats(ArrayList<HealthyFat> healhtyfats) {
         this.healhtyfats = healhtyfats;
     }
 
-    public ArrayList<ProteinBoosts> getPremiumList() {
+    public ArrayList<ProteinBoost> getPremiumList() {
         return PremiumList;
     }
 
-    public void setPremiumList(ArrayList<ProteinBoosts> premiumList) {
+    public void setPremiumList(ArrayList<ProteinBoost> premiumList) {
         PremiumList = premiumList;
     }
 
@@ -109,11 +111,10 @@ public class YogurtTreat {
     }
 
 
-    public void addYogurt(){
+    public void addYogurt() {
         System.out.println("Choose your size: Small, Medium, Large");
         Scanner scanner = new Scanner(System.in);
         YogurtTreat order = new YogurtTreat();
-        System.out.println("Choose size (SMALL, MEDIUM, LARGE):");
         String input = scanner.nextLine().trim().toUpperCase();
 
         try {
@@ -122,20 +123,83 @@ public class YogurtTreat {
             System.out.println("Invalid size entered. Please use SMALL, MEDIUM, or LARGE.");
             return;
         }
-        double basePrice = getBasePrice(order.size);
-        order.setPrice(basePrice);
         System.out.println(order.price);
 
 
         System.out.println("Enter flavor base:");
         order.setFlaborbase(scanner.nextLine().trim());
-        //touppercase,.totrim
 
-        System.out.println("");
+        //todo touppercase,.totrim
+
+
+        boolean running = true;
+        while (running) {
+            System.out.println("Choose your Protein Boosts ");
+            //todo add proetinboosts
+            System.out.println("X to finish selection");
+            System.out.println("Pick here");
+            String choice = scanner.nextLine();
+            if(choice.equalsIgnoreCase("X")){
+                running = false;
+            }
+            else{
+                System.out.println("Would you like extra true or false");
+                boolean extra = Boolean.parseBoolean(scanner.nextLine());
+                ProteinBoost boost = new ProteinBoost();
+                switch(choice) {
+                    case "1":
+                        boost.setName("first topping");
+                        boost.setExtra(extra);
+                        PremiumList.add(boost);
+                        break;
+                    case "2":
+                        boost.setName("first topping");
+                        boost.setExtra(extra);
+                        PremiumList.add(boost);
+                        break;
+                    case "3":
+                        boost.setName("first topping");
+                        boost.setExtra(extra);
+                        PremiumList.add(boost);
+                        break;
+                    case "4":
+                        boost.setName("first topping");
+                        boost.setExtra(extra);
+                        PremiumList.add(boost);
+                        break;
+                    case "5":
+                        boost.setName("first topping");
+                        boost.setExtra(extra);
+                        PremiumList.add(boost);
+                        break;
+                    case "6":
+                        boost.setName("first topping");
+                        boost.setExtra(extra);
+                        PremiumList.add(boost);
+                        break;
+                    case "7":
+                        boost.setName("first topping");
+                        boost.setExtra(extra);
+                        PremiumList.add(boost);
+                        break;
+                    case "8":
+                        boost.setName("first topping");
+                        boost.setExtra(extra);
+                        PremiumList.add(boost);
+                        break;
+                    case "9":
+                        boost.setName("first topping");
+                        boost.setExtra(extra);
+                        PremiumList.add(boost);
+                        break;
+                }
+
+
+            }
+
+        }
+
 
     }
-
-
-
 }
 
