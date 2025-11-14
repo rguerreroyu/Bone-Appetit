@@ -175,6 +175,15 @@ public class YogurtTreat {
 
         return total;
     }
+    private boolean specialPupCup;
+
+    public boolean isSpecialPupCup() {
+        return specialPupCup;
+    }
+
+    public void setSpecialPupCup(boolean specialPupCup) {
+        this.specialPupCup = specialPupCup;
+    }
 
 
 

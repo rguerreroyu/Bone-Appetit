@@ -7,6 +7,7 @@ import java.util.Scanner;
 
 public class OrderScreen {
     private ArrayList<YogurtTreat> yogurtOrders = new ArrayList<>();
+    private boolean specialPupCup;
     public static void Loading(String message) {
 
         System.out.println("\n" + message);
@@ -16,7 +17,13 @@ public class OrderScreen {
             Thread.currentThread().interrupt();
         }
     }
+    public boolean isSpecialPupCup() {
+        return specialPupCup;
+    }
 
+    public void setSpecialPupCup(boolean specialPupCup) {
+        this.specialPupCup = specialPupCup;
+    }
     public void mainMenu() {
 
         Scanner scanner = new Scanner(System.in);
@@ -43,9 +50,12 @@ public class OrderScreen {
                     addSides();
                     break;
                 case "x":
+                    writeReceipt(yogurtOrders);
+
                     running = false;
                     System.out.println("Order finished. Thank you!");
                     break;
+
                 default:
                     System.out.println("Invalid choice. Please try again.");
             }
@@ -71,7 +81,31 @@ public class OrderScreen {
 
 
         System.out.println("Enter flavor base:");
-        order.setFlaborbase(scanner.nextLine().trim());
+        System.out.println("1. Plain Greek Yogurt");
+        System.out.println("2. Peanut Butter");
+        System.out.println("3. Banana");
+        System.out.println("Pick here:");
+
+        String baseChoice = scanner.nextLine();
+
+        switch (baseChoice) {
+            case "1":
+                order.setFlaborbase("Vanilla");
+                break;
+            case "2":
+                order.setFlaborbase("Peanut Butter");
+                break;
+            case "3":
+                order.setFlaborbase("Banana");
+                break;
+            case "4":
+                order.setFlaborbase("Pumpkin");
+                break;
+            default:
+                System.out.println("Invalid choice. Defaulting to Vanilla.");
+                order.setFlaborbase("Vanilla");
+                break;
+        }
 
         //todo touppercase,.totrim
 
@@ -210,24 +244,31 @@ public class OrderScreen {
                     case "3":
                         toppings.setName("Blueberries");
                         order.getRegularList().add(toppings);
+                        break;
                     case "4":
                         toppings.setName("Strawberries");
                         order.getRegularList().add(toppings);
+                        break;
                     case "5":
                         toppings.setName("Banana slices");
                         order.getRegularList().add(toppings);
+                        break;
                     case "6":
                         toppings.setName("Apple Slices");
                         order.getRegularList().add(toppings);
+                        break;
                     case "7":
                         toppings.setName("Cantaloupe Chunks");
                         order.getRegularList().add(toppings);
+                        break;
                     case "8":
                         toppings.setName("Cucumber Slice");
                         order.getRegularList().add(toppings);
+                        break;
                     case "9":
                         toppings.setName("Orange Slices");
                         order.getRegularList().add(toppings);
+                        break;
 
                 }
             }
@@ -263,26 +304,38 @@ public class OrderScreen {
                     case "3":
                         drizzles.setName("Banana Drizzle");
                         order.getDrizzlesList().add(drizzles);
+                        break;
                     case "4":
                         drizzles.setName("Peanut Butter Drizzle");
                         order.getDrizzlesList().add(drizzles);
+                        break;
                     case "5":
                         drizzles.setName("Cranberry Drizzle");
                         order.getDrizzlesList().add(drizzles);
+                        break;
                     case "6":
                         drizzles.setName("Blueberry Drizzle");
                         order.getDrizzlesList().add(drizzles);
+                        break;
                 }
-                double orderPrice = order.calculatePrice();
-                System.out.println("Total price for this yogurt: $" + orderPrice);
 
-                // --- Add order to the main list ---
-                yogurtOrders.add(order);
 
             }
 
         }
+        System.out.println("Would you like this yogurt in our special Pup Cup? (Y/N)");
+        String pupCupChoice = scanner.nextLine().trim();
 
+        if (pupCupChoice.equalsIgnoreCase("Y")) {
+            order.setSpecialPupCup(true);
+        } else {
+            order.setSpecialPupCup(false);
+        }
+
+        double orderPrice = order.calculatePrice();
+//        System.out.println("Total price for this yogurt: $" + orderPrice);
+        printYogurtSummary(order);
+        yogurtOrders.add(order);
     }
 
     public void addDrink() {
@@ -348,10 +401,8 @@ public class OrderScreen {
 
         while (addingSides) {
             System.out.println("Select your drink:");
-            System.out.println("1. Pupacchino");
-            System.out.println("2. Water");
-            System.out.println("3. Agua Fresca");
-            System.out.println("4. Chicken Broth");
+            System.out.println("1. Dog Toy");
+            System.out.println("2. Pup Patty");
             System.out.println("X to finish");
             System.out.println("Pick here:");
 
@@ -365,19 +416,11 @@ public class OrderScreen {
             String sideName = "";
             switch (choice) {
                 case "1":
-                    sideName = "Pupacchino";
+                    sideName = "Dog Toy";
                     break;
 
                 case "2":
-                    sideName = "Water";
-                    break;
-
-                case "3":
-                    sideName = "Agua Fresca";
-                    break;
-
-                case "4":
-                    sideName = "Chicken Broth";
+                    sideName = "Pup Patty";
                     break;
 
                 default:
@@ -400,4 +443,131 @@ public class OrderScreen {
             sidesList.add(sides);
         }
     }
+    private void printYogurtSummary(YogurtTreat order) {
+        System.out.println("\n===== Your Yogurt Selection =====");
+
+        System.out.println("Size: " + order.getSize());
+        System.out.println("Flavor: " + order.getFlaborbase());
+
+        System.out.println("\nProtein Boosts:");
+        if (order.getPremiumList().isEmpty()) {
+            System.out.println("  None");
+        } else {
+            for (ProteinBoost p : order.getPremiumList()) {
+                System.out.println("  - " + p.getName() + (p.isExtra() ? " (extra)" : ""));
+            }
+        }
+
+        System.out.println("\nHealthy Fats:");
+        if (order.getHealhtyfats().isEmpty()) {
+            System.out.println("  None");
+        } else {
+            for (HealthyFat f : order.getHealhtyfats()) {
+                System.out.println("  - " + f.getName() + (f.isExtra() ? " (extra)" : ""));
+            }
+        }
+
+        System.out.println("\nFruit Toppings:");
+        if (order.getRegularList().isEmpty()) {
+            System.out.println("  None");
+        } else {
+            for (Toppings t : order.getRegularList()) {
+                System.out.println("  - " + t.getName());
+            }
+        }
+
+        System.out.println("\nDrizzles:");
+        if (order.getDrizzlesList().isEmpty()) {
+            System.out.println("  None");
+        } else {
+            for (Drizzles d : order.getDrizzlesList()) {
+                System.out.println("  - " + d.getName());
+            }
+        }
+
+        System.out.println("\nTotal price for this yogurt: $" + order.calculatePrice());
+        System.out.println("=================================\n");
+    }
+    private void writeReceipt(ArrayList<YogurtTreat> yogurtOrders) {
+        try {
+            // Create receipts folder if it doesn’t exist
+            java.io.File folder = new java.io.File("receipts");
+            if (!folder.exists()) {
+                folder.mkdir();
+            }
+
+            // Create a file name based on date/time
+            String fileName = "receipts/" + java.time.LocalDateTime.now()
+                    .toString()
+                    .replace(":", "")
+                    .replace("-", "")
+                    .replace(".", "") + ".txt";
+
+            java.io.FileWriter writer = new java.io.FileWriter(fileName);
+
+            writer.write("======= Bone Appetit Receipt =======\n\n");
+
+            double totalOrderPrice = 0;
+
+            // Loop through all yogurts added
+            for (YogurtTreat order : yogurtOrders) {
+                writer.write("Yogurt:\n");
+                writer.write(" Size: " + order.getSize() + "\n");
+                writer.write(" Flavor: " + order.getFlaborbase() + "\n");
+
+                writer.write(" Protein Boosts:\n");
+                if (order.getPremiumList().isEmpty()) {
+                    writer.write("   None\n");
+                } else {
+                    for (ProteinBoost p : order.getPremiumList()) {
+                        writer.write("   - " + p.getName() + (p.isExtra() ? " (extra)" : "") + "\n");
+                    }
+                }
+
+                writer.write(" Healthy Fats:\n");
+                if (order.getHealhtyfats().isEmpty()) {
+                    writer.write("   None\n");
+                } else {
+                    for (HealthyFat f : order.getHealhtyfats()) {
+                        writer.write("   - " + f.getName() + (f.isExtra() ? " (extra)" : "") + "\n");
+                    }
+                }
+
+                writer.write(" Toppings:\n");
+                if (order.getRegularList().isEmpty()) {
+                    writer.write("   None\n");
+                } else {
+                    for (Toppings t : order.getRegularList()) {
+                        writer.write("   - " + t.getName() + "\n");
+                    }
+                }
+
+                writer.write(" Drizzles:\n");
+                if (order.getDrizzlesList().isEmpty()) {
+                    writer.write("   None\n");
+                } else {
+                    for (Drizzles d : order.getDrizzlesList()) {
+                        writer.write("   - " + d.getName() + "\n");
+                    }
+                }
+
+                double yogurtPrice = order.calculatePrice();
+                writer.write("\n Price: $" + yogurtPrice + "\n");
+                writer.write("----------------------------------\n");
+
+                totalOrderPrice += yogurtPrice;
+            }
+
+            writer.write("\nTOTAL ORDER: $" + totalOrderPrice + "\n");
+            writer.write("Thank you for your order!\n");
+
+            writer.close();
+
+            System.out.println("Receipt saved to: " + fileName);
+
+        } catch (Exception e) {
+            System.out.println("Error saving receipt.");
+        }
+    }
+
 }

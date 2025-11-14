@@ -2,27 +2,21 @@ package com.yearup;
 import Enums.Sizing;
 import Abstract.MenuItem;
 
+import java.util.ArrayList;
+
 public class Drink extends MenuItem {
 
-            private Sizing.Size size;
+
+    private Sizing.Size size;
 
             public Drink(String name, Sizing.Size size) {
-                super(name, 0); // price calculated dynamically
+                super(name, 0);
                 this.size = size;
             }
 
             @Override
             public double calculatePrice() {
-                switch (size) {
-                    case SMALL:
-                        return 2.0;
-                    case MEDIUM:
-                        return 2.5;
-                    case LARGE:
-                        return 3.0;
-                    default:
-                        return 2.0;
-                }
+                return 0;
             }
 
             public Sizing.Size getSize() {
@@ -33,4 +27,5 @@ public class Drink extends MenuItem {
                 this.size = size;
             }
         }
+
 
