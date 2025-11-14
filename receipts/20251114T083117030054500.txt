@@ -1,0 +1,19 @@
+======= Bone Appetit Receipt =======
+
+Yogurt:
+ Size: SMALL
+ Flavor: vanilla
+ Protein Boosts:
+   None
+ Healthy Fats:
+   None
+ Toppings:
+   None
+ Drizzles:
+   None
+
+ Price: $5.5
+----------------------------------
+
+TOTAL ORDER: $5.5
+Thank you for your order!

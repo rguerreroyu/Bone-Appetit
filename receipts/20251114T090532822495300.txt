@@ -1,0 +1,31 @@
+======= Bone Appetit Receipt =======
+
+Yogurt:
+ Size: SMALL
+ Flavor: Peanut Butter
+ Protein Boosts:
+   - Quinoa (extra)
+ Healthy Fats:
+   - Apple Sauce (extra)
+ Toppings:
+   - Orange Slices
+   - Orange Slices
+   - Orange Slices
+   - Orange Slices
+   - Orange Slices
+   - Orange Slices
+   - Orange Slices
+   - Orange Slices
+   - Orange Slices
+   - Orange Slices
+   - Orange Slices
+ Drizzles:
+   - Blueberry Drizzle
+   - Blueberry Drizzle
+   - Blueberry Drizzle
+
+ Price: $8.5
+----------------------------------
+
+TOTAL ORDER: $8.5
+Thank you for your order!
