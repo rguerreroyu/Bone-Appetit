@@ -1,27 +1,42 @@
 package com.yearup;
 
-import Enums.Sizing;
-
 public class Toppings {
+    String name;
+    boolean extra;
+    boolean isPremium;
 
 
-    public class RegularTopping {
-        private String name;
+    public Toppings() {
+    }
 
-        public RegularTopping() {
-        }
+    public Toppings(String name, boolean extra, boolean isPremium) {
+        this.name = name;
+        this.extra = extra;
+        this.isPremium = isPremium;
+    }
 
-        public RegularTopping(String name) {
-            this.name = name;
-        }
+    public String getName() {
+        return name;
+    }
 
-        public String getName() {
-            return name;
-        }
+    public boolean isExtra() {
+        return extra;
+    }
 
-        public void setName(String name) {
-            this.name = name;
-        }
+    public boolean isPremium() {
+        return isPremium;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public void setExtra(boolean extra) {
+        this.extra = extra;
+    }
+
+    public void setPremium(boolean premium) {
+        isPremium = premium;
     }
 }
 
