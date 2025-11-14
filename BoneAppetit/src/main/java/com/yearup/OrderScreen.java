@@ -30,8 +30,8 @@ public class OrderScreen {
         boolean running = true;
 
         while (running) {
-            System.out.println("Welcome to my thing");
-            System.out.println("1. Add Yogurt");
+            System.out.println("Welcome to my Bone Appetit!");
+            System.out.println("1. Add Your Fur-Yo");
             System.out.println("2. Add Drink");
             System.out.println("3. Add Sides");
             System.out.println("X. Finish Order");
