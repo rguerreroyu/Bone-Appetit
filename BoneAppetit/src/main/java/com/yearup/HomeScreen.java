@@ -43,7 +43,7 @@ public class HomeScreen {
             switch (choice) {
 
                 case "1" :
-                    System.out.println("\n\n====Place holder ====");
+                    System.out.println("\n\n====Starting your order====");
                     OrderScreen orderScreen = new OrderScreen();
                     orderScreen.mainMenu();
 

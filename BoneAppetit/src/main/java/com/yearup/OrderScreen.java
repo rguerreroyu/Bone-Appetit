@@ -8,6 +8,7 @@ import java.util.Scanner;
 public class OrderScreen {
     private ArrayList<YogurtTreat> yogurtOrders = new ArrayList<>();
     private boolean specialPupCup;
+    private boolean isYearUpMember;
     public static void Loading(String message) {
 
         System.out.println("\n" + message);
@@ -30,7 +31,8 @@ public class OrderScreen {
         boolean running = true;
 
         while (running) {
-            System.out.println("Welcome to my Bone Appetit!");
+            System.out.println("Welcome to my Bone Appetit! " +
+                    "Yogurts made specially for you furry loved ones");
             System.out.println("1. Add Your Fur-Yo");
             System.out.println("2. Add Drink");
             System.out.println("3. Add Sides");
@@ -333,6 +335,11 @@ public class OrderScreen {
         }
 
         double orderPrice = order.calculatePrice();
+        if (isYearUpMember) {
+            System.out.println("Applying Year Up member discount of $0.10");
+            orderPrice -= 0.10;
+        }
+
 //        System.out.println("Total price for this yogurt: $" + orderPrice);
         printYogurtSummary(order);
         yogurtOrders.add(order);
@@ -347,8 +354,7 @@ public class OrderScreen {
             System.out.println("Select your drink:");
             System.out.println("1. Pupacchino");
             System.out.println("2. Water");
-            System.out.println("3. Pumpkin Smoothie");
-            System.out.println("4. Doggo Latte");
+            System.out.println("3. Agua Fresca");
             System.out.println("X to finish");
             System.out.println("Pick here:");
 
@@ -442,7 +448,17 @@ public class OrderScreen {
             Sides sides = new Sides(sideName, size);
             sidesList.add(sides);
         }
+        System.out.println("Are you a Year Up member? (Yes or No)");
+        String memberInput = scanner.nextLine().trim();
+        if (memberInput.equalsIgnoreCase("Yes")) {
+            isYearUpMember = true;
+            System.out.println("Congrats! You saved 10 cents off your order");
+        } else {
+            isYearUpMember = false;
+        }
+
     }
+
     private void printYogurtSummary(YogurtTreat order) {
         System.out.println("\n===== Your Yogurt Selection =====");
 
@@ -552,6 +568,11 @@ public class OrderScreen {
                 }
 
                 double yogurtPrice = order.calculatePrice();
+                if (isYearUpMember) {
+                    yogurtPrice -= 0.10;
+                    writer.write(" Year Up Member Discount Applied: -$0.10\n");
+                }
+
                 writer.write("\n Price: $" + yogurtPrice + "\n");
                 writer.write("----------------------------------\n");
 
