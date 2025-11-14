@@ -29,6 +29,18 @@ public class HealthyFat {
         return isPremium;
     }
 
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public void setExtra(boolean extra) {
+        this.extra = extra;
+    }
+
+    public void setPremium(boolean premium) {
+        isPremium = premium;
+    }
+
     public double getPrice(Sizing.Size size) {
         double price = 0;
 
@@ -54,9 +66,6 @@ public class HealthyFat {
                     price = 3.00;
                 }
                 break;
-        }
-        if (isPremium) {
-            price += 0.50;
         }
 
         return price;

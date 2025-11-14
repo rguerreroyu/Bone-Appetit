@@ -163,6 +163,7 @@ public class YogurtTreat {
                         boost.setName("Oats");
                         boost.setExtra(extra);
                         PremiumList.add(boost);
+                        order.getPremiumList().add(boost);
                         break;
                     case "2":
                         boost.setName("Yogurt Drops");
@@ -189,84 +190,97 @@ public class YogurtTreat {
                         boost.setExtra(extra);
                         PremiumList.add(boost);
                         break;
-                    case "7":
-                        boost.setName("first topping");
-                        boost.setExtra(extra);
-                        PremiumList.add(boost);
+                }
+
+            }
+
+        }
+        System.out.println("Choose your Healthy Fats! ");
+        boolean runninghealthyfats = true;
+        while (runninghealthyfats) {
+            System.out.println("Choose your Healthy Fats! ");
+            System.out.println("1.Pumpkin Puree ");
+            System.out.println("2. Coconut Oil");
+            System.out.println("3. Apple Sauce");
+            System.out.println("X to finish selection");
+            System.out.println("Pick here");
+            String choiceforhealthyfats = scanner.nextLine();
+            if (choiceforhealthyfats.equalsIgnoreCase("X")) {
+                runninghealthyfats = false;
+            } else {
+                System.out.println("Would you like extra true or false");
+                boolean extraforhealthyfats = Boolean.parseBoolean(scanner.nextLine());
+                HealthyFat healthyFat = new HealthyFat();
+                switch (choiceforhealthyfats) {
+                    //Pumpkin puree
+                    //
+                    //Coconut oil
+                    //
+                    //Applesauce
+                    case "1":
+                        healthyFat.setName("Pumpkin Puree");
+                        healthyFat.setExtra(extraforhealthyfats);
+                        healhtyfats.add(healthyFat);
+                        order.getHealhtyfats().add(healthyFat);
                         break;
-                }
-                System.out.println("Choose your Healthy Fats! ");
-                boolean runninghealthyfats = true;
-                while (running) {
-                    //Oats
-                    //- Yogurt drops
-                    //-  Quinoa
-                    //- Chia seeds
-                    //
-                    //Peanut butter drops
-                    //
-                    //Chicken bits
-                    System.out.println("Choose your Healthy Fats! ");
-                    System.out.println("1. Oats ");
-                    System.out.println("2. Yogurt Drops");
-                    System.out.println("3. Quinoa");
-                    System.out.println("4. Chia Seeds");
-                    System.out.println("5. Peanut Butter Drops");
-                    System.out.println("6. Chicken Bits");
-                    System.out.println("X to finish selection");
-                    System.out.println("Pick here");
-                    String choiceforhealthyfats = scanner.nextLine();
-                    if (choiceforhealthyfats.equalsIgnoreCase("X")) {
-                        running = false;
-                    } else {
-                        System.out.println("Would you like extra true or false");
-                        boolean extraforhealthyfats = Boolean.parseBoolean(scanner.nextLine());
-                       HealthyFat healthyFat = new HealthyFat();
-                        switch (choiceforhealthyfats) {
-                            case "1":
-                                boost.setName("Oats");
-                                boost.setExtra(extraforhealthyfats);
-                                PremiumList.add(boost);
-                                break;
-                            case "2":
-                                boost.setName("Yogurt Drops");
-                                boost.setExtra(extraforhealthyfats);
-                                PremiumList.add(boost);
-                                break;
-                            case "3":
-                                boost.setName("Quinoa");
-                                boost.setExtra(extraforhealthyfats);
-                                PremiumList.add(boost);
-                                break;
-                            case "4":
-                                boost.setName("Chia Seeds");
-                                boost.setExtra(extraforhealthyfats);
-                                PremiumList.add(boost);
-                                break;
-                            case "5":
-                                boost.setName("Peanut Butter Drops");
-                                boost.setExtra(extraforhealthyfats);
-                                PremiumList.add(boost);
-                                break;
-                            case "6":
-                                boost.setName("Chicken Bits");
-                                boost.setExtra(extraforhealthyfats);
-                                PremiumList.add(boost);
-                                break;
-                            case "7":
-                                boost.setName("first topping");
-                                boost.setExtra(extraforhealthyfats);
-                                PremiumList.add(boost);
-                                break;
-
-
-                        }
-
-                    }
+                    case "2":
+                        healthyFat.setName("Coconut Oils");
+                        healthyFat.setExtra(extraforhealthyfats);
+                        healhtyfats.add(healthyFat);
+                        break;
+                    case "3":
+                        healthyFat.setName("Apple Sauce");
+                        healthyFat.setExtra(extraforhealthyfats);
+                        healhtyfats.add(healthyFat);
+                        break;
 
 
                 }
+
             }
         }
-    }
-    }
+//        System.out.println("Add your fruit! ");
+//        boolean runningfruit = true;
+//        while (runningfruit) {
+//            ;
+//            System.out.println("1.Wa ");
+//            System.out.println("2. Coconut Oil");
+//            System.out.println("3. Apple Sauce");
+//            System.out.println("X to finish selection");
+//            System.out.println("Pick here");
+//            String choiceforhealthyfats = scanner.nextLine();
+//            if (choiceforhealthyfats.equalsIgnoreCase("X")) {
+//                runninghealthyfats = false;
+//            } else {
+//                System.out.println("Would you like extra true or false");
+//                boolean extraforhealthyfats = Boolean.parseBoolean(scanner.nextLine());
+//                HealthyFat healthyFat = new HealthyFat();
+//                switch (choiceforhealthyfats) {
+//                    //Pumpkin puree
+//                    //
+//                    //Coconut oil
+//                    //
+//                    //Applesauce
+//                    case "1":
+//                        healthyFat.setName("Pumpkin Puree");
+//                        healthyFat.setExtra(extraforhealthyfats);
+//                        healhtyfats.add(healthyFat);
+//                        order.getHealhtyfats().add(healthyFat);
+//                        break;
+//                    case "2":
+//                        healthyFat.setName("Coconut Oils");
+//                        healthyFat.setExtra(extraforhealthyfats);
+//                        healhtyfats.add(healthyFat);
+//                        break;
+//                    case "3":
+//                        healthyFat.setName("Apple Sauce");
+//                        healthyFat.setExtra(extraforhealthyfats);
+//                        healhtyfats.add(healthyFat);
+//                        break;
+//
+//
+//                }
+            }
+        }
+    //}
+//}
