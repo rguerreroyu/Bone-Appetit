@@ -32,7 +32,7 @@ public class OrderScreen {
 
         while (running) {
             System.out.println("Welcome to my Bone Appetit! " +
-                    "Yogurts made specially for you furry loved ones");
+                    "Yogurts made specially for your furry loved ones");
             System.out.println("1. Add Your Fur-Yo");
             System.out.println("2. Add Drink");
             System.out.println("3. Add Sides");
@@ -76,7 +76,7 @@ public class OrderScreen {
 
     public void addYogurt() {
 
-        System.out.println("Choose your size: Small, Medium, Large");
+        System.out.println("Choose your size: Small ($3.50), Medium ($5.0), Large ($8.50)");
         Scanner scanner = new Scanner(System.in);
         YogurtTreat order = new YogurtTreat();
         String input = scanner.nextLine().trim().toUpperCase();
