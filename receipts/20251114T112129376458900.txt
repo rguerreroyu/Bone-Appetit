@@ -1,0 +1,20 @@
+======= Bone Appetit Receipt =======
+
+Yogurt:
+ Size: SMALL
+ Flavor: Vanilla
+ Protein Boosts:
+   - Oats (extra)
+ Healthy Fats:
+   - Coconut Oils
+ Toppings:
+   - Watermelon
+ Drizzles:
+   None
+ Year Up Member Discount Applied: -$0.10
+
+ Price: $7.9
+----------------------------------
+
+TOTAL ORDER: $7.9
+Thank you for your order!
