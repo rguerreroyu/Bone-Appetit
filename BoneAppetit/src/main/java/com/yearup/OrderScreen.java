@@ -37,6 +37,7 @@ public class OrderScreen {
             System.out.println("2. Add Drink");
             System.out.println("3. Add Sides");
             System.out.println("X. Finish Order");
+            System.out.println("0. Cancel Order");
             System.out.println("Pick here:");
 
             String choice = scanner.nextLine();
@@ -51,9 +52,17 @@ public class OrderScreen {
                 case "3":
                     addSides();
                     break;
+                case "0":
+                    System.out.println("Order canceled.");
+                    yogurtOrders.clear();
+                    running = false;
+                    break;
                 case "x":
+                    if (yogurtOrders.isEmpty()) {
+                        System.out.println("You must add at least one yogurt to check out!");
+                        break;
+                    }
                     writeReceipt(yogurtOrders);
-
                     running = false;
                     System.out.println("Order finished. Thank you!");
                     break;
