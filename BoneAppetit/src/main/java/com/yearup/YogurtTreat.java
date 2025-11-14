@@ -13,12 +13,12 @@ public class YogurtTreat {
     private String flaborbase;
     private ArrayList<HealthyFat> healhtyfats = new ArrayList<>();
     private ArrayList<ProteinBoost> PremiumList = new ArrayList<>();
-    private ArrayList<RegularToppings> RegularList = new ArrayList<>();
+    private ArrayList<Toppings> RegularList = new ArrayList<>();
     private Drizzles drizzles;
     private Sides sides;
     double price;
 
-    public YogurtTreat(Sizing.Size size, String flaborbase, ArrayList<HealthyFat> healhtyfats, ArrayList<ProteinBoost> premiumList, ArrayList<RegularToppings> regularList, Drizzles drizzles, Sides sides, double price) {
+    public YogurtTreat(Sizing.Size size, String flaborbase, ArrayList<HealthyFat> healhtyfats, ArrayList<ProteinBoost> premiumList, ArrayList<Toppings> regularList, Drizzles drizzles, Sides sides, double price) {
         this.flaborbase = flaborbase;
         this.healhtyfats = healhtyfats;
         this.PremiumList = premiumList;
@@ -86,11 +86,11 @@ public class YogurtTreat {
         PremiumList = premiumList;
     }
 
-    public ArrayList<RegularToppings> getRegularList() {
+    public ArrayList<Toppings> getRegularList() {
         return RegularList;
     }
 
-    public void setRegularList(ArrayList<RegularToppings> regularList) {
+    public void setRegularList(ArrayList<Toppings> regularList) {
         RegularList = regularList;
     }
 
@@ -163,7 +163,6 @@ public class YogurtTreat {
                         boost.setName("Oats");
                         boost.setExtra(extra);
                         PremiumList.add(boost);
-                        order.getPremiumList().add(boost);
                         break;
                     case "2":
                         boost.setName("Yogurt Drops");
@@ -221,7 +220,7 @@ public class YogurtTreat {
                         healthyFat.setName("Pumpkin Puree");
                         healthyFat.setExtra(extraforhealthyfats);
                         healhtyfats.add(healthyFat);
-                        order.getHealhtyfats().add(healthyFat);
+//                        order.getHealhtyfats().add(healthyFat);
                         break;
                     case "2":
                         healthyFat.setName("Coconut Oils");
@@ -239,48 +238,42 @@ public class YogurtTreat {
 
             }
         }
-//        System.out.println("Add your fruit! ");
-//        boolean runningfruit = true;
-//        while (runningfruit) {
-//            ;
-//            System.out.println("1.Wa ");
-//            System.out.println("2. Coconut Oil");
-//            System.out.println("3. Apple Sauce");
-//            System.out.println("X to finish selection");
-//            System.out.println("Pick here");
-//            String choiceforhealthyfats = scanner.nextLine();
-//            if (choiceforhealthyfats.equalsIgnoreCase("X")) {
-//                runninghealthyfats = false;
-//            } else {
-//                System.out.println("Would you like extra true or false");
-//                boolean extraforhealthyfats = Boolean.parseBoolean(scanner.nextLine());
-//                HealthyFat healthyFat = new HealthyFat();
-//                switch (choiceforhealthyfats) {
-//                    //Pumpkin puree
-//                    //
-//                    //Coconut oil
-//                    //
-//                    //Applesauce
-//                    case "1":
-//                        healthyFat.setName("Pumpkin Puree");
-//                        healthyFat.setExtra(extraforhealthyfats);
-//                        healhtyfats.add(healthyFat);
-//                        order.getHealhtyfats().add(healthyFat);
-//                        break;
-//                    case "2":
-//                        healthyFat.setName("Coconut Oils");
-//                        healthyFat.setExtra(extraforhealthyfats);
-//                        healhtyfats.add(healthyFat);
-//                        break;
-//                    case "3":
-//                        healthyFat.setName("Apple Sauce");
-//                        healthyFat.setExtra(extraforhealthyfats);
-//                        healhtyfats.add(healthyFat);
-//                        break;
-//
-//
-//                }
+        System.out.println("Add your fruit! ");
+        boolean runningfruit = true;
+        while (runningfruit) {
+            System.out.println("1. Watermelon ");
+            System.out.println("2. Carrots");
+            System.out.println("3. Blueberries");
+            System.out.println("4. Strawberries");
+            System.out.println("5. Banana slices");
+            System.out.println("6. Apple Slices");
+            System.out.println("7. Cantaloupe Chunks");
+            System.out.println("8. Cucumber Slices");
+            System.out.println("9. Orange Slices");
+
+            System.out.println("Pick here");
+            String fruitchoice = scanner.nextLine();
+            if (fruitchoice.equalsIgnoreCase("X")) {
+                runningfruit = false;
+            } else {
+                Toppings toppings = new Toppings();
+                switch (fruitchoice) {
+
+                    case "1":
+                        toppings.setName("Pumpkin Puree");
+                        RegularList.add(toppings);
+                        break;
+                    case "2":
+                        toppings.setName("Coconut Oil");
+                        RegularList.add(toppings);
+                        break;
+                    case "3":
+                        toppings.setName("Apple Sauce");
+                        RegularList.add(toppings);
+
+
+                }
             }
         }
-    //}
-//}
+    }
+}
